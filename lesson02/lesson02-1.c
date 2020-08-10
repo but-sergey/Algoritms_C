@@ -21,15 +21,42 @@ int euclidusFast(int a, int b) {
     return a;
 }
 
+int euclidusExt(int a, int b, int* x, int* y) {
+    int q, r, x1, x2, y1, y2;
+    if(b == 0) {
+        *x = 1;
+        *y = 0;
+        return a;
+    }
+    x2 = 1;
+    x1 = 0;
+    y2 = 0;
+    y1 = 1;
+    while(b > 0) {
+        q = a / b;
+        r = a - q * b;
+        *x = x2 - q * x1;
+        *y = y2 - q * y1;
+        a = b; b = r;
+        x2 = x1; x1 = *x;
+        y2 = y1; y1 = *y;
+    }
+    *x = x2; *y = y2;
+    return a;
+}
+
 int main(int argc, char** args)
 {
     int a;
     int b;
+    int coeffA;
+    int coeffB;
     printf("Input number A: ");
     scanf("%d", &a);
     printf("Input number B: ");
     scanf("%d", &b);
-    printf("NOD = %d\n", euclidusFast(a, b));
+    printf("NOD = %d\n", euclidusExt(a, b, &coeffA, &coeffB));
+    printf("ax + by = %d\n", a * coeffA + b * coeffB);
  
     return 0;
 }
