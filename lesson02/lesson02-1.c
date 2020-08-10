@@ -11,6 +11,16 @@ int euclidus(int a, int b) {
     return a;
 }
 
+int euclidusFast(int a, int b) {
+    int c;
+    while(b) {
+        c = a % b;
+        a = b;
+        b = c;
+    }
+    return a;
+}
+
 int main(int argc, char** args)
 {
     int a;
@@ -19,7 +29,7 @@ int main(int argc, char** args)
     scanf("%d", &a);
     printf("Input number B: ");
     scanf("%d", &b);
-    printf("NOD = %d\n", euclidus(a, b));
+    printf("NOD = %d\n", euclidusFast(a, b));
  
     return 0;
 }
