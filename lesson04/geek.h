@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include "geek.c"
 
 void printIntArray(int* array, int size, int offset);
 
