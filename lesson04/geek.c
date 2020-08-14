@@ -11,8 +11,8 @@ void printIntArray(int* array, int size, int offset) {
     printf("\n");
 }
 
-int** init2dIntArray(int** array, const int row, const int col) {
-    array = (int**) calloc(sizeof(int*), row);
+int** init2dIntArray(const int row, const int col) {
+    int** array = (int**) calloc(sizeof(int*), row);
     for(int i = 0; i < row; ++i) {
         *(array + i) = (int*) calloc(sizeof(int), col);
     }
@@ -36,11 +36,18 @@ void fillIntRandom(int* arr, int len, int border) {
         *(arr + i) = rand() % border;
     }
 }
-
 void fill2dIntArray(int** array, const int row, const int col) {
     for(int i = 0; i < row; ++i) {
         for(int j = 0; j < col; ++j) {
             *((*(array + i)) + j) = 0;
+        }
+    }
+}
+
+void fill2dIntArrayRandom(int** array, const int row, const int col, int border) {
+    for(int i = 0; i < row; ++i) {
+        for(int j = 0; j < col; ++j) {
+            *((*(array + i)) + j) = rand() % border;
         }
     }
 }
@@ -186,3 +193,27 @@ int searchInter(int* arr, int len, int value) {
         return -1;
     }
 }
+/*
+void indexToRowCol(int row, int col, int index, int *r, int *c) {
+    if((index < row * col) && (index >= 0)) {
+        *r = index / col;
+        *c = index % col;
+    } else {
+        *r = -1; *c = -1;
+    }
+}
+
+void bubble2dSort(int** array, int row, int col) {
+    int r1, c1;
+    int r2, c2;
+    for(int i = 0; i < row * col; i++) {
+        for(int ind = 0; ind < row * col - i - 1; ind++) {
+            indexToRowCol(row, col, ind, &r1, &c1);
+            indexToRowCol(row, col, ind + 1, &r2, &c2);
+            if(array[r1][c1] > array[r2][c2]){
+                swapInt(&array[r1][c1], &array[r2][c2]);
+            }
+        }
+    }
+}
+*/
