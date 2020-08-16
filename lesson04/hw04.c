@@ -1,3 +1,4 @@
+#include <math.h>
 #include "geek.h"
 
 void indexToRowCol(int row, int col, int index, int *r, int *c) {
@@ -23,17 +24,47 @@ void bubble2dSort(int** array, int row, int col) {
     }
 }
 
+void inputSequence(float* arr, int size) {
+    for(int i = 0; i < size; i++) {
+        printf("Input number N%d: ", i + 1);
+        scanf("%f", &arr[i]);
+    }
+}
+
+void reverseSequence(float* arr, int size) {
+    for(int i = 0; i < size / 2; i++) {
+        swapFloat(&arr[i], &arr[size - i - 1]);
+    }
+}
+
+void mathSequence(float* arr, int size) {
+    for(int i = 0; i < size; i++) {
+        float x = arr[i];
+        float t = sqrt(fabs(x)) + 5 * pow(x, 3);
+        if(t > 400.0) {
+            printf("f(P[%d]) > 400!\n", i);
+        }
+    }
+}
+
 int main(int argc, char** args) {
     const int row = 5;
     const int col = 12;
     const int maxNum = 100;
-    
     int** arr = init2dIntArray(row, col);
     fill2dIntArrayRandom(arr, row, col, maxNum);
     print2dIntArray(arr, row, col, 3);
     printf("\n");
     bubble2dSort(arr, row, col);
     print2dIntArray(arr, row, col, 3);
+    printf("\n");
+
+    const int MAX = 11;
+    float P[MAX];
+    inputSequence(P, MAX);
+    reverseSequence(P, MAX);
+    mathSequence(P, MAX);
+    printf("Done!\n");
     
     return 0;
 }

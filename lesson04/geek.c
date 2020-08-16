@@ -66,6 +66,12 @@ void swapInt(int *a, int *b) {
     *b = t;
 }
 
+void swapFloat(float *a, float *b) {
+    float t = *a;
+    *a = *b;
+    *b = t;
+}
+
 void bubbleSort(int* arr, int len) {
     for(int i = 0; i < len; ++i) {
         for(int j = 0; j < len - 1; ++j) {

@@ -18,6 +18,7 @@ int get2dInt(int** array, const int row, const int col);
 void set2dInt(int** array, const int row, const int col, int value);
 
 void swapInt(int *a, int *b);
+void swapFloat(float *a, float *b);
 
 void bubbleSort(int* arr, int len);
 void shakerSort(int* arr, int len);
